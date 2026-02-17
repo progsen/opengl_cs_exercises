@@ -45,16 +45,14 @@ namespace GLColorDemo
 
         private void Render(double time)
         {
-
             Matrix4 m = Matrix4.Identity;
             shader.SetModelMatrix(m);
             plane.Renderer();
-
         }
 
         internal void StartFrame()
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit );
+            GL.Clear(ClearBufferMask.ColorBufferBit);
             shader.Use();
             SetupViewMatrices();
 

@@ -13,6 +13,12 @@
 
   <ItemGroup>
     <Compile Remove="Audio.cs" />
+    <Compile Remove="MainWindow.Solution01.cs" />
+    <Compile Remove="MainWindow.Solution02.cs" />
+    <Compile Remove="MainWindow.Solution03.cs" />
+    <Compile Remove="MainWindow.Solution04.cs" />
+    <Compile Remove="MainWindow.Solution05.cs" />
+    <Compile Remove="MainWindow.Solution06.cs" />
   </ItemGroup>
 
   <ItemGroup>

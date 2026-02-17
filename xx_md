@@ -1,0 +1,97 @@
+
+## Oefening 2 — Rij van vlakken, zelfde `Plane` hergebruiken
+**Doel:** Meerdere instanties tekenen door uitsluitend de **model-matrix** te variëren.
+
+- Teken b.v. 5 vlakken in een rij: i ∈ {−2, −1, 0, 1, 2}.
+- Gebruik één en dezelfde `Plane`-instantie.
+- Voor elke instantie: `model = Matrix4.CreateTranslation(i * gap, 0, 0)`; vervolgens `shader.SetModelM(model)` en `plane.Renderer()`.
+- Kies een mooie `gap` (bijv. 1.2f).
+
+**Checklist**
+- Eén `Plane`, meerdere draw-calls met andere model-matrices.
+
+---
+
+## Oefening 3 — Maak een **grid** van vlakken
+**Doel:** Geneste lussen en 2D positionering met de model-matrix.
+
+- Teken bijvoorbeeld 3 rijen × 5 kolommen.
+- Gebruik twee gaps: `gapX`, `gapY`.
+- Bepaal de offset zodat het grid gecentreerd is (bijv. start op negatieve offsets).
+
+**Checklist**
+- Dubbele for-lus (y-rijen, x-kolommen).
+- Per tegel: `model = T(x,y) * R * S` (rotatie/schaal optioneel).
+
+---
+
+## Oefening 4 — Render **alle drie**: `Plane`, `Circle`, `Triangle`
+**Doel:** Meerdere `Shape`-subklassen laden en tekenen.
+
+- Maak velden aan voor `Circle` en `Triangle` en roep `Load(shader)` aan in `OnLoad()`.
+- Positioneer ze met verschillende model-matrices (bijv. links = Triangle, midden = Plane, rechts = Circle).
+- Zorg dat ze **op dezelfde z** staan om overlap in oefening 5 te kunnen zien.
+
+**Checklist**
+- Drie objecten, ieder met eigen `model`.
+
+---
+
+## Oefening 5 — **Tekenvolgorde**: wie ligt bovenop zonder diepte-test?
+**Doel:** Begrijpen dat zónder depth test de **laatst getekende** bovenop ligt.
+
+- Laat de diepte-test uit.
+- Teken de drie vormen in verschillende volgordes en observeer wie visueel “bovenop” ligt.
+- Conclusie: zonder Z-buffer bepaalt **de volgorde van draw-calls** de overlapping.
+
+**Checklist**
+- Z-buffer **uit** (geen `GL.Enable(DepthTest)`).
+- Bewuste wijziging van de tekenvolgorde.
+
+---
+
+## Oefening 6 — Z‑as verplaatsen, daarna Z‑buffer aanzetten
+**Doel:** Painter’s algorithm vs. depth testing begrijpen.
+
+1. **Zonder Z‑buffer:**
+   - Geef elke vorm een andere z‑positie (bijv. Triangle z=0, Circle z=−1, Plane z=−2).
+   - **Teken expres verkeerd**: render de **verste** als **laatste** zodat deze, ondanks zijn grotere diepte, alles overschildert.
+2. **Z‑buffer aan:**
+   - Zet `GL.Enable(DepthTest)` aan (eenmalig in `OnLoad()`).
+   - Wis elke frame met `GL.Clear(ColorBufferBit | DepthBufferBit)` en (optioneel) `GL.ClearDepth(1.0)`. Laat dezelfde (verkeerde) draw-volgorde staan.
+   - Observeer: nu wordt toch de juiste diepte-occlusie toegepast.
+
+**Checklist**
+- Eerst fout zichtbaar zónder depth test.
+- Daarna **alleen** depth aan + depth clear; **géén** volgorde-aanpassing nodig.
+
+---
+
+### Bonusideeën
+- Laat de camera **in- en uitzoomen** met het muiswiel (pas `projection` of `view` aan).
+- Maak per vorm een eigen kleur en laat deze lerarenopdracht visueel duidelijker zien.
+
+### Hints
+- `StartFrame()` is een logische plek voor `shader.Use()` en het zetten van view/projection.
+- Je huidige `MainWindow` gebruikt `LookAt(new Vector3(0,0,10), new Vector3(), Vector3.UnitY)` en een perspectief FOV van 90°. Pas daar opgave 1 toe.
+- Vergeet niet dat **CCW** standaard de front face is; bij culling kan volgorde of winding effect hebben.
+
+Veel succes!
+
+
+
+
+
+
+---------
+
+
+
+
+- Gebruik een tijdsvariabele (accumuleer `e.Time`) om een vloeiende beweging te krijgen.
+- Pas in `SetupViewMatrices()` de **camera-positie** aan (bijv. `x = sin(t) * 2`).
+- Gebruik `Matrix4.LookAt(new Vector3(x, 0, 10), Vector3.Zero, Vector3.UnitY)`.
+
+**Checklist**
+- Geen wijzigingen aan `model`.
+- Alleen de **view** verandert in de tijd.

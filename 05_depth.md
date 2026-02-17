@@ -43,3 +43,19 @@
 
 - als het goed is is nu je triangle bovenop:
     > ![](img/ontop.PNG)
+
+
+## Oefening 5.D
+
+- pas nu je render volgorde aan:
+    - teken de plane als eerst
+    - dan circle
+    - dan triangle
+- als het goed is blijft alles hetzelfde:
+    > ![](img/ontop.PNG)
+
+- lees:
+```
+met de Z buffer zijn we nu niet meer afhankelijk van de volgorde waar we dingen in tekenen
+- er is een uitzondering: als we transparantie tekenen, dan moeten we wel weer op de volgorde letten!
+```

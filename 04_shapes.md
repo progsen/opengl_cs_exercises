@@ -25,3 +25,6 @@
     - rechts = Circle
 
 - laat de Z nog even hetzelfde.
+
+- check je uitkomst
+    > ![](img/shapes.PNG)

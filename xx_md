@@ -1,39 +1,4 @@
 
-## Oefening 2 — Rij van vlakken, zelfde `Plane` hergebruiken
-**Doel:** Meerdere instanties tekenen door uitsluitend de **model-matrix** te variëren.
-
-- Teken b.v. 5 vlakken in een rij: i ∈ {−2, −1, 0, 1, 2}.
-- Gebruik één en dezelfde `Plane`-instantie.
-- Voor elke instantie: `model = Matrix4.CreateTranslation(i * gap, 0, 0)`; vervolgens `shader.SetModelM(model)` en `plane.Renderer()`.
-- Kies een mooie `gap` (bijv. 1.2f).
-
-**Checklist**
-- Eén `Plane`, meerdere draw-calls met andere model-matrices.
-
----
-
-## Oefening 3 — Maak een **grid** van vlakken
-**Doel:** Geneste lussen en 2D positionering met de model-matrix.
-
-- Teken bijvoorbeeld 3 rijen × 5 kolommen.
-- Gebruik twee gaps: `gapX`, `gapY`.
-- Bepaal de offset zodat het grid gecentreerd is (bijv. start op negatieve offsets).
-
-**Checklist**
-- Dubbele for-lus (y-rijen, x-kolommen).
-- Per tegel: `model = T(x,y) * R * S` (rotatie/schaal optioneel).
-
----
-
-## Oefening 4 — Render **alle drie**: `Plane`, `Circle`, `Triangle`
-**Doel:** Meerdere `Shape`-subklassen laden en tekenen.
-
-- Maak velden aan voor `Circle` en `Triangle` en roep `Load(shader)` aan in `OnLoad()`.
-- Positioneer ze met verschillende model-matrices (bijv. links = Triangle, midden = Plane, rechts = Circle).
-- Zorg dat ze **op dezelfde z** staan om overlap in oefening 5 te kunnen zien.
-
-**Checklist**
-- Drie objecten, ieder met eigen `model`.
 
 ---
 

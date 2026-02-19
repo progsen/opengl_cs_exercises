@@ -22,5 +22,17 @@ als je beide frames kan weergeven dan weet je hoe je bij andere frames met de UV
 
 - zorg nu ervoor dat je de sprite animeert
     - het mooiste is als je een animation class maakt
-
     > probeer het eerst zelf, lukt het niet volg de guide: [09_guide.md](09_guide.md)
+
+    ```
+    LET op: 
+
+    waarschijnlijk is het beter om de VBO te scheiden in 2 buffers: 
+    - static data (vertices bijvoorbeeld)
+    - uv 
+
+    waarom? Omdat dit performance scheelt als je 1 componenten (uv in dit geval) vaak update, als je vertices niet veranderen wil je dat niet elke keer uploaden naar je card.
+    zeker voor modellen met veel triangles.
+
+    ook wil de card dan nog wel eens de hele buffer opnieuw maken
+    ```

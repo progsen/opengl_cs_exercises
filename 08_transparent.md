@@ -54,3 +54,4 @@
 - controlleer:
     > ![](img/1frame.PNG)
     
+- probeer nu ook het andere frame te laten zien (bewaar je oude code!)

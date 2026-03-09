@@ -3,8 +3,9 @@
 **Doel:** Begrijpen dat je met verschillende projecties andere beelden krijgt
 
 - ga verder in je project met de shapes
-    - pas de camera matrix aan:
-        > gebruik
+    - zoek Matrix4.CreatePerspectiveFieldOfView
+    - verander dat naar een Matrix4.CreateOrthographic
+    - gebruik deze waardes:
         > een near and far van  0.1f en  100
         > een height van 10
         > een width van 10
